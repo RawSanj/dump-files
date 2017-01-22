@@ -1,0 +1,61 @@
+Hello Everone,
+My name is SR and today I'll give you a quick overiview of Kubenets & fabric8 for docker conatiner apps.
+We will look at our Aviation solution which we hav deloyed on Kubenets with CI/CD pipeline  using MYSQL database deployed as pods in Kubernetes.
+and then we'll checkout few other demos and other cool features of fabric8.
+
+Kubernetes is an open-source project developed by Google for automating deployment, scaling, and management of containerized applications.
+	Automatic binpacking:
+		Automatically places docker containers based on their resource requirements such as RAM, CPU, etc and other constraints. 
+	Self-healing:
+		Kub restarts containers that fail, replaces and reschedules containers when nodes die, kills containers that don't respond to your user-defined health check.
+	Horizontal scaling:
+		Scale your application up and down with a simple command, with a UI, or automatically based on CPU usage.
+	Service discovery and load balancing:
+		Kubernetes gives containers their own IP addresses and a single DNS name for a set of containers, and can load-balance across them.
+	Automated rollouts and rollbacks:
+		Kubernetes progressively rolls out changes to your application or its configuration, while monitoring application health to ensure it doesn't kill all your instances at the same time. If something goes wrong, Kubernetes will rollback the change for you.
+		Helps achive Blue/Green deployment, Cnanary release, A/B testing, etc.
+	Secret and configuration management:	
+		Deploy and update secrets and application configuration without rebuilding your image and without exposing secrets in your stack configuration.
+		No need for any external config or secret storage server.
+	Storage orchestration:
+		Automatically mount the storage system of your choice, whether from local storage, a public cloud provider such as GCP or AWS, or a network storage system.
+		When conatiners die, you loose all the data. Storage orchestration helps you preserve that data.
+		
+Now that we know how beneficial it is to use Kubenets for containrized applications, lets see how we can make it more useful and easier to devlop cloud native microservces.
+
+Enter Fabric8.
+fabric8 is an end to end development platform spanning ideation to production for the creation of cloud native applications and microservices.
+it provides various tools for development n depoyment of apps and move it to prod with ease.
+these tools include-
+	Ops Tools:
+		Fabric8 Console - creating apps.
+		Logging: Elasticsearch & Kibana.
+		Metrics: Prometheus & Grafana.
+	Team Tools:
+		Chat, Issues & Notification: Hubot, Lets Chat, Slack.
+		Issues & Kanban: Taiga. project mgmnt.
+		Source code: Gogs, Gerrit, Gitlab.
+	iPaaS:
+		Integration as a Service: Apache Camel.
+		Messaging as a Service: Apache ActiveMQ.
+		APIs: Apiman, API Registry
+		Console & Web IDE: hawtio, Eclipse Orion.
+
+Lets see how fabric8 helps build containerized apps faster and easier.
+F8 provides set of Open source tools to build CI/CD pipeline.
+All these apps - Jenkins, Gogs, nexus, docker registry taht u see here are ruining inisde kub cluster as PODS, so you dont have to buy these as a service. U nly pay for Infrasyrcure.
+f8 supports various app dev lang such as java, php, .net, nodejs, golang,
+we will conc of spring boot micorservice since f8 provides additional libs for java.
+When u create a new SPboot microsevice, F8 creates a src code repo in Gogs (Github like repo hosting service), you simply clone the repo make code changes and push the changes and let fabric8 CI/CD pipeline deploy it to various env.
+When u push changes Jenkins runs the Unit tests, buils release, deploys the jars, artifacts in Nexus repo, creates docker containers for ur jar microservice and uploads that docker image into internal Docker registry.
+It creates isolated ENVs based on jenkins n f8 config files, runs the Integration tests in Testing env.
+Deploys the app into Staging env and waits for Human approval to deploy it to Production.
+You can approve deploy to prod from f8 console, jenkins or configure chatOps (set os chat applications where u'll get notifcations for pending approval).
+After approval it goes to prod. 
+F8 provies set of tools for logging n monitoring your app and env.
+
+Enough talking, lets see the demo.
+
+
+
